@@ -1,27 +1,15 @@
-# NodeSslExample
+# Local testing
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.4.
+1. Generate SSL certs
 
-## Development server
+sh ssl.sh
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+2. Build Docker image
 
-## Code scaffolding
+docker build --rm -f "Dockerfile" -t node-ssl-example:latest .
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+3. Run image 
 
-## Build
+docker run -d -p 80:80 -p 443:443 node-ssl-example:latest
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+4. Open https://localhost
